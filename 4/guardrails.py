@@ -42,7 +42,7 @@ def invalid_prompt():
 def validate_prompt(user_message, functions_list):
     criteria = load_criteria()
 
-    system_prompt = f"You area guardrail assistant with the task of making sure that all user prompts meet the proper criteria before being allowed to pass through to the LLM. You will be asked to avaluate a user prompt. Based on the evaluation criteria and your analysis, look through the available functions and contents and tell me which one can best provide me what I need based on my question. Reply with the name of the function and nothing else. Do not include the parentheis. Evaluation Criteria: {criteria}\n\nAvailable Functions: {functions_list}\n\nReply with the name of the function and nothing else. Do not include the parentheis."
+    system_prompt = f"You area guardrail assistant with the task of making sure that all user prompts meet the proper criteria before being allowed to pass through to the LLM. You will be asked to evaluate a user prompt. Based on the evaluation criteria and your analysis, look through the available functions and contents and tell me which one can best provide me what I need based on my question. Reply with the name of the function and nothing else. Do not include the parentheis. Evaluation Criteria: {criteria}\n\nAvailable Functions: {functions_list}\n\nReply with the name of the function and nothing else. Do not include the parentheis."
     prompt = f"Evaluate the following prompt: {user_message}"
 
     # Send the request to OpenAI
@@ -120,7 +120,7 @@ def start(user_message):
 
     function_mapping = {
         "general_message": general_message,
-        "invalide_prompt": invalid_prompt,
+        "invalid_prompt": invalid_prompt,
     }
 
     # Check if functions list is empty
