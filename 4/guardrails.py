@@ -51,6 +51,7 @@ def validate_prompt(user_message, functions_list):
             model="gpt-4-turbo-preview",
             messages=[{"role": "system", "content": system_prompt},{"role": "user", "content": prompt}],
             temperature=0.5,
+            max_tokens=500,
         )
     except Exception as e:
         print("An error occurred while connecting to the OpenAI API:", e)
