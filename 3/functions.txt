@@ -1,0 +1,2 @@
+invalid_prompt: Use this function when the prompt is considered invalid.
+general_message: Use this function when the prompt has been properly validated.
