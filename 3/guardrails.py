@@ -37,7 +37,7 @@ def load_criteria():
 def validate_prompt(user_message, functions_list):
     criteria = load_criteria()
 
-    system_prompt = f"You area guardrail assistant with the task of making sure that all user prompts meet the proper criteria before being allowed to pass through to the LLM. You will be asked to evaluate a user prompt. Based on the evaluation criteria and your analysis, look through the available functions and contents and tell me which one can best provide me what I need based on my question. Reply with the name of the function and nothing else. Do not include the parentheis. Evaluation Criteria: {criteria}\n\nAvailable Functions: {functions_list}\n\nReply with the name of the function and nothing else. Do not include the parentheis."
+    system_prompt = f"You area guardrail assistant with the task of making sure that all user prompts meet the proper criteria before being allowed to pass through to the LLM. You will be asked to avaluate a user prompt. Based on the evaluation criteria and your analysis, look through the available functions and contents and tell me which one can best provide me what I need based on my question. Reply with the name of the function and nothing else. Do not include the parentheis. Evaluation Criteria: {criteria}\n\nAvailable Functions: {functions_list}\n\nReply with the name of the function and nothing else. Do not include the parentheis."
     prompt = f"Evaluate the following prompt: {user_message}"
 
     # Send the request to OpenAI
@@ -61,6 +61,7 @@ def validate_prompt(user_message, functions_list):
 # Chat Agent ####################################################################################
 def general_message():
     # Send the request to OpenAI
+    #print(conversation_history)
     try:
         response = client.chat.completions.create(
             model="gpt-4-turbo-preview",
@@ -68,12 +69,13 @@ def general_message():
             temperature=0.7,
         )
     except Exception as e:
-        print("An error occurred while connecting to the OpenAI API:", e)
+        #print("An error occurred while connecting to the OpenAI API:", e)
         return f"An error occurred while connecting to the OpenAI API: {e}"
 
     # Extract the answer
     answer = response.choices[0].message.content.strip()
     update_conversation_history("assistant", answer)
+    #print(f"{answer}\n")
     return answer
 
 def invalid_prompt():
@@ -93,7 +95,7 @@ def start(user_message):
 
     function_mapping = {
         "general_message": general_message,
-        "invalid_prompt": invalid_prompt,
+        "invalide_prompt": invalid_prompt,
     }
 
     # Check if functions list is empty
