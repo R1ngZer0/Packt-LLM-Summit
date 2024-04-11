@@ -98,7 +98,7 @@
                         // Replace the placeholder with the analysis result
                         placeholderDiv.classList.remove('placeholder');
                         placeholderDiv.innerHTML = data
-                        //placeholderDiv.innerHTML = markdownToHTML(data); // Convert the response to HTML
+                        placeholderDiv.innerHTML = markdownToHTML(data); // Convert the response to HTML
                         chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
                     } else {
                         console.error('No result in response:', data);
