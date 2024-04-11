@@ -24,7 +24,7 @@ def load_functions_list():
         return ""
     
 def load_criteria():
-    # Load functions list from a text file 
+    # Load criteria list from a text file 
     try:
         with open('criteria.txt', 'r') as file:
             return file.read().strip()
